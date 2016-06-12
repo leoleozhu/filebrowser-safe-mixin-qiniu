@@ -9,3 +9,19 @@ filebrowser_safe contains `Mixin` classes for famous storage providers like Amaz
 Qiniu is a file service provider in China and of course not in the list.
 
 This project defines an extension for filebrowser_safe to make it work with QiniuStorage (django-qiniu-storage).
+
+# Usage
+
+
+`pip install filebrowser-safe-mixin-qiniu`
+
+Then, add the following lines at your django application's entry point.
+
+
+```python
+from qiniustorage.backends import QiniuStorage
+from filebrowser_safe_mixin_qiniu.storage import QiniuStorageMixin
+
+if QiniuStorageMixin not in QiniuStorage.__bases__:
+    QiniuStorage.__bases__ += (QiniuStorageMixin,)
+```
